@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Conditional Pal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- minified bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!--jQuery -->
+    <script src="js/jquery-2.0.3.min.js" ></script>
+    <!-- minified bootstrap JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- canto34 (https://github.com/stevecooperorg/canto34) -->
+    <script src="js/canto34.js"></script>
+    <!-- conditional.js -->
+    <script src="js/conditional.js"></script>
+    <style type="text/css">
+      body { padding-top: 100px; }
+      .btn-example.btn { padding-left: 0; }
+    </style>
+  </head>
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Conditional Pal</a>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="row">
+        <div class="col-lg-8">
+
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Standard Logic</h3>
+            </div>
+            <form id="conditionalForm">
+              <div class="form-group">
+                <textarea id="conditionalInput" class="form-control" rows="15" style="font-family: courier; font-weight: bold;">
+if ([[S8]] ^ https://) {
+  // this url starts with https://
+} else {
+  // this url does not start with https://
+}
+
+if (  "dog" == "pete" ) {
+  // "dog" is "pete" - that does not sound right
+}else {
+  // "dog" is not "pete"
+}
+
+if ((1>2) || (a == b)) {
+  // a must equal b
+}
+
+if (9 > 5) || (true == true) {
+  // we are true on both accounts
+}
+
+if ("Bob" == [[S1:first_name]]) {
+  // Bob is our first name
+  if (B > C) {
+    // B is greater than C
+    if(9 != 2) {
+      // 9 does not equal 2
+      if 4==4 {
+        // 4 equals 4
+        if (99<problems) {
+          // we have less than 99 problems
+        } else {
+          // dang, we have more than 99 problems
+        }
+      }
+    } else {
+      // 9 equals 2?
+    }
+  }
+} else{
+  // "Bob" is not our first name
+}
+
+if ((1<2) || ((a == b) && ([[S1:first_name]] != [[S1:last_name]]))) {
+  // wow, that is all true
+  if(c == d){
+    // c equals d
+    if (9 >= 5) {
+      // nine is greater than or equal to five
+    }
+  } else {
+    // c does not equal d
+  }
+}else{
+  // all of the above is not true
+}</textarea>
+              </div>
+              <button id="buildConditional" type="button" class="btn btn-success">Build Conditional</button>
+              <button id="clearWorkspace" type="button" class="btn btn-link pull-right">Clear Workspace</button>
+            </form>
+          </div>
+
+          <div id="resultsContainer" class="panel panel-success hidden">
+            <div class="panel-heading">
+              <h3 class="panel-title">Luminate Conditional</h3>
+            </div>
+            <div id="conditionalResults"></div>
+          </div>
+          
+        </div>
+        <div class="col-lg-4">
+
+          
+            <div id="resultsContainer" class="panel panel-info">
+              <div class="panel-heading">
+                <h3 class="panel-title">Reference</h3>
+              </div>
+              <div id="reference" style="height: 550px; overflow-y: auto;">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Operator</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                    <tr>
+                      <td align="right"><button data-insert="if" type="button" class="btn-reference btn btn-info btn-mini">&nbsp;if&nbsp;</button></td>
+                      <td>
+                        <small>if...</small><br/>
+                        <button type="button" class="btn-example btn btn-link btn-mini" data-example='if (3>2) {
+  three is greater than two
+}'>Show me an example</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="right"><button data-insert="else" type="button" class="btn-reference btn btn-info btn-mini">&nbsp;else&nbsp;</button></td>
+                      <td>
+                        <small>else...</small><br/>
+                        <button type="button" class="btn-example btn btn-link btn-mini" data-example='if (a==b) {
+} else {
+  "a" does not equal "b"
+}'>Show me an example</button>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="right">&nbsp;</td>
+                      <td>&nbsp;</td>
+                    </tr>
+
+                    <tr>
+                      <td align="right"><button data-insert="==" type="button" class="btn-reference btn btn-info btn-mini">&nbsp;==&nbsp;</button></td>
+                      <td>
+                        <small>Equal To</small><br/>
+                        <button type="button" class="btn-example btn btn-link btn-mini" data-example='if (foo == foo) {
+  "foo" equals "foo"
+} else {
+}'>Show me an example</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="right"><button data-insert="!=" type="button" class="btn-reference btn btn-info btn-mini">&nbsp;!=&nbsp;</button></td>
+                      <td>
+                        <small>Not Equal To</small><br/>
+                        <button type="button" class="btn-example btn btn-link btn-mini" data-example='if (foo != bar) {
+  "foo" does not equal "bar"
+} else {
+}'>Show me an example</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="right"><button data-insert=">" type="button" class="btn-reference btn btn-info btn-mini">&nbsp;>&nbsp;</button></td>
+                      <td>
+                        <small>Greater Than</small><br/>
+                        <small class="text-muted"><em>(numbers and currency only)</em></small><br/>
+                        <button type="button" class="btn-example btn btn-link btn-mini" data-example='if (5 > 2) {
+  five is greater than two
+} else {
+}'>Show me an example</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="right"><button data-insert=">=" type="button" class="btn-reference btn btn-info btn-mini">&nbsp;>=&nbsp;</button></td>
+                      <td>
+                        <small>Greater Than or Equal To</small><br/>
+                        <small class="text-muted"><em>(numbers and currency only)</em></small><br/>
+                        <button type="button" class="btn-example btn btn-link btn-mini" data-example='if (5 >= 5) {
+  five is greater than or equal to five
+} else {
+}'>Show me an example</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="right"><button data-insert="<" type="button" class="btn-reference btn btn-info btn-mini">&nbsp;<&nbsp;</button></td>
+                      <td>
+                        <small>Less Than</small><br/>
+                        <small class="text-muted"><em>(numbers and currency only)</em></small><br/>
+                        <button type="button" class="btn-example btn btn-link btn-mini" data-example='if (2 < 5) {
+  two is less than five
+} else {
+}'>Show me an example</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="right"><button data-insert="<=" type="button" class="btn-reference btn btn-info btn-mini">&nbsp;<=&nbsp;</button></td>
+                      <td>
+                        <small>Less Than or Equal To</small><br/>
+                        <small class="text-muted"><em>(numbers and currency only)</em></small><br/>
+                        <button type="button" class="btn-example btn btn-link btn-mini" data-example='if (2 <= 2) {
+  two is less than or equal to two
+} else {
+}'>Show me an example</button>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="right"><button data-insert="*" type="button" class="btn-reference btn btn-info btn-mini">&nbsp;*&nbsp;</button></td>
+                      <td>
+                        <small>Contains</small><br/>
+                        <button type="button" class="btn-example btn btn-link btn-mini" data-example='if (12345 * 234) {
+  "12345" contains "234"
+} else {
+}'>Show me an example</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="right"><button data-insert="^" type="button" class="btn-reference btn btn-info btn-mini">&nbsp;^&nbsp;</button></td>
+                      <td>
+                        <small>Starts With</small><br/>
+                        <button type="button" class="btn-example btn btn-link btn-mini" data-example='if (abcdefg ^ abc) {
+  "abcdefg" starts with "abc"
+} else {
+}'>Show me an example</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="right"><button data-insert="$" type="button" class="btn-reference btn btn-info btn-mini">&nbsp;$&nbsp;</button></td>
+                      <td>
+                        <small>Ends With</small><br/>
+                        <button type="button" class="btn-example btn btn-link btn-mini" data-example='if (abcdefg $ efg) {
+  "abcdefg" ends with "efg"
+} else {
+}'>Show me an example</button>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="right">&nbsp;</td>
+                      <td>&nbsp;</td>
+                    </tr>
+
+                    <tr>
+                      <td align="right"><button data-insert="&&" type="button" class="btn-reference btn btn-info btn-mini">&nbsp;&&&nbsp;</button></td>
+                      <td>
+                        <small>Logical AND</small><br/>
+                        <button type="button" class="btn-example btn btn-link btn-mini" data-example='if ((3<1) && (true==true)) {
+  this will not display
+} else {
+  this will display
+}'>Show me an example</button><br/>
+                      <small class="text-muted"><em>(Note: you cannot combine the use of && and || in the same group of parentheses)</em></small><br/>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="right"><button data-insert="||" type="button" class="btn-reference btn btn-info btn-mini">&nbsp;||&nbsp;</button></td>
+                      <td>
+                        <small>Logical OR</small><br/>
+                        <button type="button" class="btn-example btn btn-link btn-mini" data-example='if ((5>7) || (true==true)) {
+  this will display
+} else {
+  this will not display
+}'>Show me an example</button><br/>
+                        <small class="text-muted"><em>(Note: you cannot combine the use of && and || in the same group of parentheses)</em></small><br/>
+                      </td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            
+        </div>
+      </div>
+
+    </div><!-- /.container -->
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-319440-15', 'eduar.de');
+      ga('send', 'pageview');
+    </script>
+
+  </body>
+</html>
