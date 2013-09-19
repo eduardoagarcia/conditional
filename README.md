@@ -2,7 +2,7 @@
 #### Create complex conditionals within Blackbaud's Luminate CRM
 
 ## Overview:
-Ever wanted to write really complex, nested Luminate Conditionals with && and || that test for cool stuff like `<`, `>=`, `^`, or even `$`?
+Ever wanted to write really complex, nested Luminate Conditionals with `&&` and `||` that test for cool stuff like `<`, `>=`, `^`, or even `$`?
 
 Now you can.  With the Conditional Pal, you can write logic that is visually more traditional in syntax and then convert it to our beloved Luminate Conditional syntax.
 
