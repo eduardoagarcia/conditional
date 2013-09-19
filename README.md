@@ -4,7 +4,7 @@
 ## Overview:
 Ever wanted to write really complex, nested Luminate Conditionals with `&&` and `||` that test for cool stuff like `<`, `>=`, `^`, or even `$`?
 
-Now you can.  With the Conditional Pal, you can write logic that is visually more traditional in syntax and then convert it to our beloved Luminate Conditional syntax.
+Now you can.  With Conditional Pal, you can write logic that is visually more traditional in syntax and then convert it to our beloved Luminate Conditional syntax.
 
 ## Example:
 
@@ -100,12 +100,12 @@ Result:
 
 ## Additional Notes and Warnings:
 
-* Use at your own risk.  I have tested thoroughly, but test before you use on a client’s site.
+* Use at your own risk.  I have tested thoroughly, but test before you use on a client's site.
 * Some of the conditionals, especially the basic ones, are probably more complex than a human would write—this is due to the way the tool uses 1s and 0s as true/false.  Feel free to simplify if you need to, or even learn from the tool to write your own complex conditionals.
 * The conditionals will get very intense very quick, so be aware.
-* Don’t go crazy wrapping with unnecessary parentheses.  As long as you close all open parentheses, it will return valid logic.  Example: `(((((1>2)))))` will return a working conditional, albeit quite strangely wrapped in extras that aren’t needed.  Instead, use `(1>2)` or even `1>2` to keep things simple.
-* You can’t use `&&` and `||` within the same set of parentheses.  The following example will not work and the `&&` will be ignored: `(1>2 || 3<5 || a!=b && z==x || 1 * 1)`.  The tool uses the first logical as the logical type to be used within the parentheses.
-* Garbage In -> Garbage Out.  While the tool does have syntax error checking, if you give it garbage, it will give you garbage back.
+* Don't go crazy wrapping with unnecessary parentheses.  As long as you close all open parentheses, it will return valid logic.  Example: `(((((1>2)))))` will return a working conditional, albeit quite strangely wrapped in extras that aren't needed.  Instead, use `(1>2)` or even `1>2` to keep things simple.
+* You can't use `&&` and `||` within the same set of parentheses.  The following example will not work and the `&&` will be ignored: `(1>2 || 3<5 || a!=b && z==x || 1 * 1)`.  The tool uses the first logical as the logical type to be used within the parentheses.
+* Garbage In gives you Garbage Out.  While the tool does have syntax error checking, if you give it garbage, it will give you garbage in return.
 
 ## Links:
 
