@@ -1,12 +1,12 @@
 # Conditional Pal
 #### Create complex conditionals within Blackbaud's Luminate CRM
 
-## Overview
-Ever wanted to write really complex, nested Luminate Conditionals with "ands" and "ors" that test for cool stuff like less than, greater than or equal, begins with, or even ends with?
+## Overview:
+Ever wanted to write really complex, nested Luminate Conditionals with && and || that test for cool stuff like `<`, `>=`, `^`, or even `$`?
 
 Now you can.  With the Conditional Pal, you can write logic that is visually more traditional in syntax and then convert it to our beloved Luminate Conditional syntax.
 
-## Example
+## Example:
 
 The tool translates:
 
@@ -16,7 +16,7 @@ if (2 <= 2) {
 }
 ```
 
-To:
+to:
 
 ```
 [[?x1x::x[[E130: 2 2 < 2 2 == ||]]x::
@@ -24,7 +24,7 @@ To:
 ::]]
 ```
 
-## Operations
+## Operations:
 
 The following operations are supported:
 
@@ -38,7 +38,7 @@ The following operations are supported:
 * Starts with (`^`)
 * Ends with (`$`)
 
-## Logicals
+## Logicals:
 
 The tool also supports both the logical AND (`&&`) and the logical OR (`||`).  For example, wrap your conditional statements in parentheses to give precedence using logicals:
 
@@ -48,7 +48,15 @@ if (5 != 5 || (1 < 2 && 3 > 2)) {
 }
 ```
 
-## Nesting
+Result:
+
+```
+[[?x1x::x[[?[[?x5x::x5x::0::1]][[?x[[E130: 1 2 <]][[E130: 3 2 >]]x::x11x::1::0]]::1::1::0]]x::
+    parentheses in action
+::]]
+```
+
+## Nesting:
 
 Nest your conditionals if you need:
 
@@ -58,6 +66,16 @@ if (foo != bar) {
         foo equals foo
     }
 }
+```
+
+Result:
+
+```
+[[?x1x::x[[?xfoox::xbarx::0::1]]x::
+    [[?x1x::x[[?xfoox::xfoox::1::0]]x::
+        foo equals foo
+    ::]]
+::]]
 ```
 
 ## Utilize else statements:
@@ -70,6 +88,16 @@ if (dog == cat) {
 }
 ```
 
+Result:
+
+```
+[[?x1x::x[[?xdogx::xcatx::1::0]]x::
+    weird...
+::
+    dogs are not cats!
+]]
+```
+
 ## Additional Notes and Warnings:
 
 * Use at your own risk.  I have tested thoroughly, but test before you use on a client’s site.
@@ -79,7 +107,7 @@ if (dog == cat) {
 * You can’t use `&&` and `||` within the same set of parentheses.  The following example will not work and the `&&` will be ignored: `(1>2 || 3<5 || a!=b && z==x || 1 * 1)`.  The tool uses the first logical as the logical type to be used within the parentheses.
 * Garbage In -> Garbage Out.  While the tool does have syntax error checking, if you give it garbage, it will give you garbage back.
 
-## Links
+## Links:
 
 [Conditional Pal](http://eduar.de/tools/conditional/)
 
