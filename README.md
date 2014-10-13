@@ -109,6 +109,6 @@ Result:
 
 ## Links:
 
-[Conditional Pal](http://eduar.de/tools/conditional/)
+[Conditional Pal](http://eduardoagarcia.com/dev-tools/conditional/index.html)
 
 More examples plus a full reference (with examples as well) are built into the tool.
