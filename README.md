@@ -4,7 +4,7 @@
 ## Overview:
 Ever wanted to write really complex, nested Luminate Conditionals with `&&` and `||` that test for cool stuff like `<`, `>=`, `^`, or even `$`?
 
-Now you can.  With [Conditional Pal](http://eduar.de/tools/conditional/), you can write logic that is visually more traditional in syntax and then convert it to our beloved Luminate Conditional syntax.
+Now you can.  With Conditional Pal, you can write logic that is visually more traditional in syntax and then convert it to our beloved Luminate Conditional syntax.
 
 ## Example:
 
@@ -107,8 +107,6 @@ Result:
 * You can't use `&&` and `||` within the same set of parentheses.  The following example will not work and the `&&` will be ignored: `(1>2 || 3<5 || a!=b && z==x || 1 * 1)`.  The tool uses the first logical as the logical type to be used within the parentheses.
 * Garbage In gives you Garbage Out.  While the tool does have syntax error checking, if you give it garbage, it will give you garbage in return.
 
-## Links:
-
-[Conditional Pal](http://eduardoagarcia.com/dev-tools/conditional/index.html)
+## Notes:
 
 More examples plus a full reference (with examples as well) are built into the tool.
